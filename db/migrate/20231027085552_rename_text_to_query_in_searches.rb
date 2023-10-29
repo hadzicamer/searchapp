@@ -1,0 +1,5 @@
+class RenameTextToQueryInSearches < ActiveRecord::Migration[7.1]
+  def change
+    rename_column :searches, :text, :query
+  end
+end

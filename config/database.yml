@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: searchdb
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+development:
+  <<: *default
+  database: searchdb
+  host: localhost
+
+test:
+  <<: *default
+  database: searchdb
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>

@@ -1,0 +1,25 @@
+<div class="centered-form" data-session-id="<%= session.id.to_s %>">
+  <div class="custom-form">
+    <h1>Real-Time Search & Analytics</h1>
+
+    <%= form_with(url: articles_path, method: :get, remote: true, id: "search-form") do |form| %>
+      <div class="mb-3">
+        <div class="input-group">
+          <%= form.text_field :query, class: "form-control", placeholder: "Search for articles", id: "query" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div id="results" style="margin-top: 20px;">
+      <h2>Search Results</h2>
+    </div>
+
+    <hr style="border-top: 1px solid #000; margin-top: 20px; margin-bottom: 20px;">
+
+    <div id="analytics" style="margin-top: 20px;">
+      <h2>Search Analytics</h2>
+    </div>
+
+  </div>
+</div>
+<script type="module" src="<%= javascript_path 'article' %>"></script>

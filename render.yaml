@@ -1,0 +1,16 @@
+services:
+- type: web
+  name: searchapp
+  env: ruby
+  buildCommand: "bin/render-build.sh"
+  startCommand: "bundle exec rails server -p $PORT"
+  envVars:
+  - key: RAILS_MASTER_KEY
+    fromPath: config/master.key
+  - key: RAILS_ENV
+    value: production
+
+databases:
+-   name: searchdb
+    databaseName: searchdb
+    user: amer.hadzic
