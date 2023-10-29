@@ -1,4 +1,16 @@
-import { subscription } from "javascript/channels/search_channel.js";
+let subscription;
+
+if (process.env.NODE_ENV === 'production') {
+  import('app/assets/javascripts/article_prod.js')
+    .then((module) => {
+      subscription = module.subscription;
+    });
+} else {
+  import('app/assets/javascripts/article_dev.js')
+    .then((module) => {
+      subscription = module.subscription;
+    });
+}
 
 const MIN_QUERY_LEN = 3;
 let timeout;
@@ -110,4 +122,4 @@ function displaySearchAnalytics() {
     
     analyticsEl.appendChild(analytics);
   }
-}
+};

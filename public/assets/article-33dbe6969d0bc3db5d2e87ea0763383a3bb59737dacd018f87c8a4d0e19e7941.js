@@ -1,4 +1,4 @@
-import { subscription } from "javascript/channels/search_channel.js";
+import { subscription } from process.env.ASSET_PATH;
 
 const MIN_QUERY_LEN = 3;
 let timeout;
@@ -110,4 +110,4 @@ function displaySearchAnalytics() {
     
     analyticsEl.appendChild(analytics);
   }
-}
+};

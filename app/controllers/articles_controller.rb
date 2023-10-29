@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
     @articles = Article.all
     query = params[:query]
     if query.present? && query.length >= MIN_QUERY_LEN
-      @results = @articles.where("title LIKE ?", "%#{query}%")
+      @results = @articles.where("title ILIKE ?", "%#{query}%")
 
       RecordSearchJob.perform_later(query, session.id.to_s)
 
