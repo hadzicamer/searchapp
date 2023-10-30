@@ -10,7 +10,16 @@ services:
   - key: RAILS_ENV
     value: production
 
+workers:
+- name: searchapp-worker
+  env: ruby
+  buildCommand: "bin/render-build.sh"
+  startCommand: "bundle exec sidekiq -e production"
+  envVars:
+  - key: RAILS_ENV
+    value: production
+
 databases:
 -   name: searchdb
-    databaseName: searchdb
-    user: amer.hadzic
+    databaseName: searchdb_j5cj
+    user: searchdb_j5cj_user
