@@ -50,13 +50,10 @@ function fetchSearchResults(query, sessionId) {
 
 
 function handleResponse(response) {
-  if (response.type !== 'basic') {
+  const contentType = response.headers.get("content-type");
+  if (!contentType || !contentType.includes("application/json")) {
     throw new TypeError("Oops, we haven't got any data.");
   }
-  // const contentType = response.headers.get("content-type");
-  // if (!contentType || !contentType.includes("application/json")) {
-  //   throw new TypeError("Oops, we haven't got any data.");
-  // }
   return response.json();
 }
 
@@ -112,4 +109,4 @@ function displaySearchAnalytics() {
     
     analyticsEl.appendChild(analytics);
   }
-}
+};
