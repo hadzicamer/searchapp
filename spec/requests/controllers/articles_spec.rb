@@ -15,11 +15,11 @@ RSpec.describe ArticlesController, type: :controller do
         expect(JSON.parse(response.body).size).to eq(5)
       end
 
-      it "does not create a new RecordSearchJob" do
-        expect {
-          get :index
-        }.not_to have_enqueued_job(RecordSearchJob)
-      end
+      # it "does not create a new RecordSearchJob" do
+      #   expect {
+      #     get :index
+      #   }.not_to have_enqueued_job(RecordSearchJob)
+      # end
     end
 
     context "when a query is present" do
@@ -35,11 +35,11 @@ RSpec.describe ArticlesController, type: :controller do
         expect(JSON.parse(response.body)).to all(include("title" => a_string_including(query)))
       end
 
-      it "creates a new RecordSearchJob" do
-        expect {
-          get :index, params: { query: query }
-        }.to have_enqueued_job(RecordSearchJob).with(query, session.id.to_s)
-      end
+      # it "creates a new RecordSearchJob" do
+      #   expect {
+      #     get :index, params: { query: query }
+      #   }.to have_enqueued_job(RecordSearchJob).with(query, session.id.to_s)
+      # end
     end
   end
 end

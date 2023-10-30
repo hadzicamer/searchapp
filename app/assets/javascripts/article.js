@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchSearchResults(query, sessionId) {
-  // Include the session ID in the request
   fetch(`/articles?query=${query}&session_id=${sessionId}`, {
     method: "GET",
     headers: {
@@ -53,7 +52,7 @@ function fetchSearchResults(query, sessionId) {
 function handleResponse(response) {
   const contentType = response.headers.get("content-type");
   if (!contentType || !contentType.includes("application/json")) {
-    throw new TypeError("Oops, we haven't got JSON!");
+    throw new TypeError("Oops, we haven't got any data.");
   }
   return response.json();
 }
