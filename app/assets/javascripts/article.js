@@ -1,4 +1,4 @@
-import { subscription } from "../javascript/channels/search_channel.js";
+import { subscription } from "./channels/search_channel.js";
 
 const MIN_QUERY_LEN = 3;
 let timeout;
