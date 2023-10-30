@@ -4,6 +4,8 @@
 
  <hr>
 
+Realtime search and analytics
+
  ## Example:
  User searches:
  - How 
