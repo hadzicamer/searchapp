@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
     if query.present? && query.length >= MIN_QUERY_LEN
       @results = @articles.where("title LIKE ?", "%#{query}%")
 
-      # RecordSearchJob.perform_later(query, session.id.to_s)
+      RecordSearchJob.perform_later(query, session.id.to_s)
 
       render json: @results and return
     end
